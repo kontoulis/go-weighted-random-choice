@@ -60,13 +60,13 @@ func (wrs *WeightedRandomChoice) calibrateWeights() {
 	}
 }
 
-func New(precision ...int) WeightedRandomChoice {
-	var p = 1000
-	if len(precision) > 0 {
-		p = precision[0]
+func New(arguments ...int) WeightedRandomChoice {
+	var precision = 1000
+	if len(arguments) > 0 {
+		precision = arguments[0]
 	}
 	return WeightedRandomChoice{
-		precision:         p,
+		precision:         precision,
 		calibratedWeights: false,
 		calibrateValue:    1,
 	}
