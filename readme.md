@@ -1,5 +1,5 @@
-# Weighted Random Choice
-This is a simple package for WR choices based on weights.
+# Golang Weighted Random Choice
+This is a simple package for creating Weighted Random Choices.
 
 ### Usage
 Instantiate a `WeightedRandomChoice` object by calling `New()`.
