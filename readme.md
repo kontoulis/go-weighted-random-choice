@@ -20,13 +20,13 @@ func main(){
     wrs.AddElement("rare", 10)
     wrs.AddElement("green", 30)
     // OR add elements as a map[string]int
-     wrs.AddElements(map[string]int{
-    		"common"    : 59,
-    		"epic"      : 1,
-    		"rare"      : 10,
-    		"green"     : 30,
-    	})
-   
+    wrs.AddElements(map[string]int{
+        "common"    : 59,
+        "epic"      : 1,
+        "rare"      : 10,
+        "green"     : 30,
+    })
+
     choice := wrs.GetRandomChoice()
 }
 ```
