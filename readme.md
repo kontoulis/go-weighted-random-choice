@@ -4,8 +4,8 @@ This is a simple package for WR choices based on weights.
 ### Usage
 Instantiate a `WeightedRandomChoice` object by calling `New()`.
 `New()` takes optional argument `precision` which is by default `1000`.
-This is used to calibrate the weights for more precise results
-Add elements with `name` and `weight` and then call `GetRandomChoice` to retrieve an element.
+which is used to calibrate the weights for more precise results.
+Add elements with `name` and `weight` and then call `GetRandomChoice` to retrieve a random weighted choice.
 ```go
 package main
 
