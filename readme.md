@@ -2,13 +2,13 @@
 This is a simple package for creating Weighted Random Choices.
 
 ### Usage
-To use WRS, import :
+To use WRC, import :
 ```go
 import "github.com/kontoulis/go-weighted-random-choice"
 ``` 
 Instantiate a `WeightedRandomChoice` object by calling `New()`.
-`New()` takes optional argument `precision` which is by default `1000`.
-which is used to calibrate the weights for more precise results.
+`New()` takes optional argument `precision` which is by default `1000` which
+is used to calibrate the weights for more precise results.
 ```go
 wrc := WeightedRandomChoice.New()
 ```
