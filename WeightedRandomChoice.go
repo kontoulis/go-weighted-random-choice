@@ -15,48 +15,48 @@ type WeightedRandomChoice struct {
 	calibrateValue    int
 }
 
-func (wrs *WeightedRandomChoice) AddElement(element string, weight int) {
-	weight *= wrs.calibrateValue
-	i := sort.Search(len(wrs.Weights), func(i int) bool { return wrs.Weights[i] > weight })
-	wrs.Weights = append(wrs.Weights, 0)
-	wrs.Elements = append(wrs.Elements, "")
-	copy(wrs.Weights[i+1:], wrs.Weights[i:])
-	copy(wrs.Elements[i+1:], wrs.Elements[i:])
-	wrs.Weights[i] = weight
-	wrs.Elements[i] = element
-	wrs.TotalWeight += weight
+func (wrc *WeightedRandomChoice) AddElement(element string, weight int) {
+	weight *= wrc.calibrateValue
+	i := sort.Search(len(wrc.Weights), func(i int) bool { return wrc.Weights[i] > weight })
+	wrc.Weights = append(wrc.Weights, 0)
+	wrc.Elements = append(wrc.Elements, "")
+	copy(wrc.Weights[i+1:], wrc.Weights[i:])
+	copy(wrc.Elements[i+1:], wrc.Elements[i:])
+	wrc.Weights[i] = weight
+	wrc.Elements[i] = element
+	wrc.TotalWeight += weight
 }
 
-func (wrs *WeightedRandomChoice) AddElements(elements map[string]int) {
+func (wrc *WeightedRandomChoice) AddElements(elements map[string]int) {
 	for element, weight := range elements{
-		wrs.AddElement(element, weight)
+		wrc.AddElement(element, weight)
 	}
 }
 
-func (wrs *WeightedRandomChoice) GetRandomChoice() string {
+func (wrc *WeightedRandomChoice) GetRandomChoice() string {
 	rand.Seed(time.Now().UnixNano())
-	value := rand.Intn(wrs.TotalWeight)
-	if !wrs.calibratedWeights {
-		wrs.calibrateWeights()
+	value := rand.Intn(wrc.TotalWeight)
+	if !wrc.calibratedWeights {
+		wrc.calibrateWeights()
 	}
-	for key, weight := range wrs.Weights {
+	for key, weight := range wrc.Weights {
 		value -= weight
 		if value <= 0 {
-			return wrs.Elements[key]
+			return wrc.Elements[key]
 		}
 	}
 	return ""
 }
 
-func (wrs *WeightedRandomChoice) calibrateWeights() {
-	if wrs.TotalWeight/wrs.precision < 1 {
-		wrs.calibrateValue = wrs.precision / wrs.TotalWeight
-		wrs.TotalWeight = 0
-		for key := range wrs.Weights {
-			wrs.Weights[key] *= wrs.calibrateValue
-			wrs.TotalWeight += wrs.Weights[key]
+func (wrc *WeightedRandomChoice) calibrateWeights() {
+	if wrc.TotalWeight/wrc.precision < 1 {
+		wrc.calibrateValue = wrc.precision / wrc.TotalWeight
+		wrc.TotalWeight = 0
+		for key := range wrc.Weights {
+			wrc.Weights[key] *= wrc.calibrateValue
+			wrc.TotalWeight += wrc.Weights[key]
 		}
-		wrs.calibratedWeights = true
+		wrc.calibratedWeights = true
 	}
 }
 

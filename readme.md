@@ -10,18 +10,18 @@ Instantiate a `WeightedRandomChoice` object by calling `New()`.
 `New()` takes optional argument `precision` which is by default `1000`.
 which is used to calibrate the weights for more precise results.
 ```go
-wrs := WeightedRandomChoice.New()
+wrc := WeightedRandomChoice.New()
 ```
 Add elements one by one with `name` and `weight`.
 ```go
-wrs.AddElement("common", 59)
-wrs.AddElement("epic", 1)
-wrs.AddElement("rare", 10)
-wrs.AddElement("green", 30)
+wrc.AddElement("common", 59)
+wrc.AddElement("epic", 1)
+wrc.AddElement("rare", 10)
+wrc.AddElement("green", 30)
 ```
 You can also add multiple elements by passing a `map[string]int` in `AddElements` 
 ```go
-wrs.AddElements(map[string]int{
+wrc.AddElements(map[string]int{
     "common"    : 59,
     "epic"      : 1,
     "rare"      : 10,
@@ -30,5 +30,5 @@ wrs.AddElements(map[string]int{
 ```
 Then you can call `GetRandomChoice` to retrieve a random weighted choice
 ```go
-choice := wrs.GetRandomChoice()
+choice := wrc.GetRandomChoice()
 ```
