@@ -9,6 +9,8 @@ import "github.com/kontoulis/go-weighted-random-choice"
 Instantiate a `WeightedRandomChoice` object by calling `New()`.
 `New()` takes optional argument `precision` which is by default `1000` and
 is used for the weight calibration in order to generate more precise results.
+The `precision` of `1000` will scale weights to a `totalWeight = 1000`, while keeping the weight ratios.
+e.g. weights 1, 2, 3 and 4 will become 100, 200, 300 and 400 respectively
 ```go
 wrc := WeightedRandomChoice.New()
 ```
