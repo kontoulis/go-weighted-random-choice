@@ -7,8 +7,8 @@ To use WRC, import :
 import "github.com/kontoulis/go-weighted-random-choice"
 ``` 
 Instantiate a `WeightedRandomChoice` object by calling `New()`.
-`New()` takes optional argument `precision` which is by default `1000` which
-is used to calibrate the weights for more precise results.
+`New()` takes optional argument `precision` which is by default `1000` and
+is used for the weight calibration in order to generate more precise results.
 ```go
 wrc := WeightedRandomChoice.New()
 ```
